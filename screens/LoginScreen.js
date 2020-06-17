@@ -1,7 +1,8 @@
 /* global alert */
 
 import React, { Component } from 'react';
-import { View, StyleSheet, AsyncStorage } from 'react-native';
+import { View, StyleSheet} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Input, Button, Text } from 'react-native-elements';
 import baseStyles from '../styles/base';
 import { testProps, USER_KEY, login } from '../lib/utils';

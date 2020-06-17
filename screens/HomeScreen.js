@@ -60,7 +60,7 @@ if (Platform.OS === 'android') {
   });
 }
 
-async function handleOpenUrl(url, componentId) {
+async function handleOpenUrl({url}, componentId) {
   const route = url.replace(/.*?:\/\//g, '');
   const [handler, ...parts] = route.split('/');
   if (handler === 'login') {
@@ -82,13 +82,13 @@ export default function HomeScreen({componentId}) {
     (async () => {
       if (Platform.OS === 'Android') {
         const url = await Linking.getInitialURL();
-        await handleOpenUrl(url, componentId);
+        await handleOpenUrl({url}, componentId);
       } else {
-        Linking.addEventListener('url', this.handleOpenUrl);
+        Linking.addEventListener('url', handleOpenUrl);
       }
     })();
     return function cleanup() {
-      Linking.removeEventListener('url', this.handleOpenUrl);
+      Linking.removeEventListener('url', handleOpenUrl);
     };
   });
 
@@ -115,3 +115,5 @@ export default function HomeScreen({componentId}) {
     </ScrollView>
   );
 }
+
+HomeScreen.options = {topBar: {title: {text: 'TheApp'}}};
