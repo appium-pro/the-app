@@ -102,13 +102,11 @@ export default function HomeScreen({componentId}) {
             subtitle={l.desc}
             bottomDivider
             onPress={() =>
-              navigator.push(
-                Navigation.push(componentId, {
-                  component: {
-                    name: `${l.screen}Screen`,
-                  },
-                }),
-              )
+              Navigation.push(componentId, {
+                component: {
+                  name: `${l.screen}Screen`,
+                },
+              })
             }
             {...testProps(l.name)}
           />
