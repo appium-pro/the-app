@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "clean": "react-native clean-project", 
+    "clean": "react-native clean-project",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -16,6 +16,7 @@
     "react-native": "0.66.3",
     "react-native-elements": "^3.4.2",
     "react-native-navigation": "^7.23.1-hotfix.1",
+    "react-native-safe-area-context": "^3.3.2",
     "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
