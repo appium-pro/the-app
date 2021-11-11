@@ -98,8 +98,6 @@ export default function HomeScreen({componentId}) {
         {viewList.map((l, i) => (
           <ListItem
             key={i}
-            title={l.name}
-            subtitle={l.desc}
             bottomDivider
             onPress={() =>
               Navigation.push(componentId, {
@@ -109,7 +107,12 @@ export default function HomeScreen({componentId}) {
               })
             }
             {...testProps(l.name)}
-          />
+          >
+            <ListItem.Content>
+              <ListItem.Title>{l.name}</ListItem.Title>
+              <ListItem.Subtitle>{l.desc}</ListItem.Subtitle>
+            </ListItem.Content>
+          </ListItem>
         ))}
       </View>
     </ScrollView>

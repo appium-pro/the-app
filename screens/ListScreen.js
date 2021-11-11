@@ -73,10 +73,13 @@ export default class ListScreen extends Component {
           {Object.keys(CLOUD_TYPES).map(cloudType => (
             <ListItem
               key={cloudType}
-              title={cloudType}
               onPress={() => this.showPickedAlert(cloudType)}
               {...testProps(cloudType)}
-            />
+            >
+              <ListItem.Content>
+                <ListItem.Title>{cloudType}</ListItem.Title>
+              </ListItem.Content>
+            </ListItem>
           ))}
         </List>
       </ScrollView>

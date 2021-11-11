@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Input, Button} from 'react-native-elements';
 import baseStyles from '../styles/base';
 import {testProps} from '../lib/utils';
