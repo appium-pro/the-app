@@ -2,8 +2,8 @@ import {Navigation} from 'react-native-navigation';
 
 import HomeScreen from './HomeScreen';
 import EchoScreen from './EchoScreen';
-//import LoginScreen from './LoginScreen';
-//import SecretScreen from './SecretScreen';
+import LoginScreen from './LoginScreen';
+import SecretScreen from './SecretScreen';
 //import VerifySMSScreen from './VerifySMSScreen';
 //import ClipboardScreen from './ClipboardScreen';
 //import HybridScreen from './HybridScreen';
@@ -17,8 +17,8 @@ import EchoScreen from './EchoScreen';
 export function registerScreens() {
   Navigation.registerComponent('HomeScreen', () => HomeScreen);
   Navigation.registerComponent('EchoScreen', () => EchoScreen);
-  //Navigation.registerComponent('LoginScreen', () => LoginScreen);
-  //Navigation.registerComponent('SecretScreen', () => SecretScreen);
+  Navigation.registerComponent('LoginScreen', () => LoginScreen);
+  Navigation.registerComponent('SecretScreen', () => SecretScreen);
   //Navigation.registerComponent('VerifySMSScreen', () => VerifySMSScreen);
   //Navigation.registerComponent('ClipboardScreen', () => ClipboardScreen);
   //Navigation.registerComponent('HybridScreen', () => HybridScreen);
