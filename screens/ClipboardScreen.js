@@ -1,57 +1,55 @@
-import React, { Component } from 'react';
-import { Clipboard, View, StyleSheet, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import { Input, Button } from 'react-native-elements';
 import baseStyles from '../styles/base';
 import { testProps } from '../lib/utils';
 
-export default class ClipboardScreen extends Component {
+export default function ClipboardScreen({componentId}) {
+  const [clipboardText, setClipboardText] = useState('');
+  const [curText, setCurText] = useState('');
 
-
-  constructor() {
-    super();
-    this.state = {clipboardText: null, curText: null};
+  async function refresh() {
+    try {
+      setClipboardText(await Clipboard.getString());
+    } catch (ign) {
+      setClipboardText('');
+    }
   }
 
-  async componentDidMount() {
-    await this.refresh();
+  function setText() {
+    Clipboard.setString(curText);
   }
 
-  async refresh() {
-    this.setState({clipboardText: await Clipboard.getString()});
-  }
+  useEffect(() => {(async() => {
+    // if we're already logged in, just go to the secret area already
+    await refresh()
+  })()}, [componentId]);
 
-  async setText() {
-    await Clipboard.setString(this.state.curText);
-  }
-
-
-  render() {
-    const {clipboardText} = this.state;
-    return (
-      <View style={styles.main}>
-        <View style={{...baseStyles.flexCenter}}>
-          <Text style={styles.echoHeader}>Here&apos;s the clipboard text:</Text>
-          <Text style={styles.savedEcho} testId="clipboardText" accessibilityLabel={clipboardText}>{clipboardText}</Text>
-          <Button {...testProps('refreshClipboardText')} text="Refresh Clipboard Text"
-            onPress={this.refresh.bind(this)}
-          />
-        </View>
-        <View style={styles.form}>
-          <Input
-            placeholder="Enter text"
-            style={styles.formControl}
-            onChangeText={(text) => this.setState({curText: text})}
-            {...testProps('messageInput')}
-          />
-          <Button
-            text="Set Clipboard Text" style={styles.formControl}
-            onPress={this.setText.bind(this)}
-            {...testProps('setClipboardText')}
-          />
-        </View>
+  return (
+    <View style={styles.main}>
+      <View style={{...baseStyles.flexCenter}}>
+        <Text style={styles.echoHeader}>Here&apos;s the clipboard text:</Text>
+        <Text style={styles.savedEcho} testId="clipboardText" accessibilityLabel={clipboardText}>{clipboardText}</Text>
+        <Button {...testProps('refreshClipboardText')} title="Refresh Clipboard Text"
+          onPress={refresh}
+        />
       </View>
-    );
-  }
+      <View style={styles.form}>
+        <Input
+          placeholder="Enter text"
+          style={styles.formControl}
+          onChangeText={(text) => setCurText(text)}
+          {...testProps('messageInput')}
+        />
+        <Button
+          title="Set Clipboard Text" style={styles.formControl}
+          onPress={setText}
+          {...testProps('setClipboardText')}
+        />
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
+    paddingTop: baseStyles.margin * 5
   },
   echoHeader: {
     fontSize: baseStyles.fontSizeMed,
@@ -80,6 +78,6 @@ const styles = StyleSheet.create({
   formControl: {
     margin: baseStyles.margin,
     height: 50,
-    width: '100%',
+    width: '90%',
   },
 });

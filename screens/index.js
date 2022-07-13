@@ -1,11 +1,11 @@
-import {Navigation} from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 
 import HomeScreen from './HomeScreen';
 import EchoScreen from './EchoScreen';
 import LoginScreen from './LoginScreen';
 import SecretScreen from './SecretScreen';
 //import VerifySMSScreen from './VerifySMSScreen';
-//import ClipboardScreen from './ClipboardScreen';
+import ClipboardScreen from './ClipboardScreen';
 //import HybridScreen from './HybridScreen';
 //import Hybrid2Screen from './Hybrid2Screen';
 //import ListScreen from './ListScreen';
@@ -20,7 +20,7 @@ export function registerScreens() {
   Navigation.registerComponent('LoginScreen', () => LoginScreen);
   Navigation.registerComponent('SecretScreen', () => SecretScreen);
   //Navigation.registerComponent('VerifySMSScreen', () => VerifySMSScreen);
-  //Navigation.registerComponent('ClipboardScreen', () => ClipboardScreen);
+  Navigation.registerComponent('ClipboardScreen', () => ClipboardScreen);
   //Navigation.registerComponent('HybridScreen', () => HybridScreen);
   //Navigation.registerComponent('Hybrid2Screen', () => Hybrid2Screen);
   //Navigation.registerComponent('ListScreen', () => ListScreen);
