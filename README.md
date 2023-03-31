@@ -1,14 +1,4 @@
-# the-app
-Cross-platform test application
+# MOVED
 
-# To build the Android apk locally
-
-`npm install`
-
-`yarn`
-
-`cd android`
-
-`./gradlew clean build`
-
-The apks are generated in the following folder: android\app\build\apk\release and android\app\build\apk\debug directories 
+THIS PROJECT HAS MOVED TO
+[https://github.com/appium-pro/TheApp](https://github.com/appium-pro/TheApp)
